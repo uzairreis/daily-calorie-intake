@@ -14,7 +14,7 @@ document.getElementById("calculate").addEventListener("click", function () {
         return;
     }
 
-    // BMR Calculation based on Gender
+    // BMR cslculation
     let bmr;
     if (gender === "male") {
         bmr = 10 * weight + 6.25 * height - 5 * age + 5; // Male formula
@@ -22,35 +22,31 @@ document.getElementById("calculate").addEventListener("click", function () {
         bmr = 10 * weight + 6.25 * height - 5 * age - 161; // Female formula
     }
 
-    // Calculate calorie needs based on lifestyle
+    // calorie calculation
     let calorieIntake = bmr * lifestyle;
 
-    // Adjust calorie intake based on goal
     if (goal === "lose") {
-        calorieIntake *= 0.8; // Reduce by 20% for weight loss
+        calorieIntake *= 0.8; 
     } else if (goal === "gain") {
-        calorieIntake *= 1.2; // Increase by 20% for weight gain
+        calorieIntake *= 1.2;
     }
 
-    // Adjust calorie intake based on body type
     if (bodyType === "ectomorph") {
-        calorieIntake *= 1.1; // Increase by 10% for ectomorph
+        calorieIntake *= 1.1; 
     } else if (bodyType === "endomorph") {
-        calorieIntake *= 0.9; // Reduce by 10% for endomorph
+        calorieIntake *= 0.9; 
     }
 
-    calorieIntake = Math.round(calorieIntake); // Round to the nearest integer
+    calorieIntake = Math.round(calorieIntake);
 
-    // Display the result
+    // Resu;t
     document.getElementById("result").innerText = `Your recommended daily calorie intake is ${calorieIntake} kcal.`;
 
-    // Call function to show food suggestions based on calorie intake
+    // Call function to show food suggestions 
     showFoodSuggestions(calorieIntake);
 });
 
-// Function to display food suggestions
 function showFoodSuggestions(calories) {
-    // Define food items with their calorie values per serving
     let foods = {
         proteins: [
             { name: "Whey Protein", calories: 120, quantity: "1 scoop (30g)" },
@@ -67,35 +63,31 @@ function showFoodSuggestions(calories) {
         ]
     };
 
-    // Distribute calories to different food categories (Proteins, Carbs, Fats)
-    let proteinCalories = calories * 0.3; // 30% of total calories for protein
-    let carbCalories = calories * 0.5;    // 50% of total calories for carbs
-    let fatCalories = calories * 0.2;     // 20% of total calories for fats
+    let proteinCalories = calories * 0.3; 
+    let carbCalories = calories * 0.5;   
+    let fatCalories = calories * 0.2;     
 
-    // Calculate servings for each food category
     let foodSuggestions = "Here are some food suggestions based on your calorie intake:\n\n";
     
-    // Suggest protein foods
+
     foodSuggestions += "Protein Sources:\n";
     foods.proteins.forEach(food => {
         let servings = Math.floor(proteinCalories / food.calories); 
         foodSuggestions += `${food.name}: ${servings} servings of ${food.quantity}\n`;
     });
 
-    // Suggest carb foods
     foodSuggestions += "\nCarbohydrate Sources:\n";
     foods.carbs.forEach(food => {
         let servings = Math.floor(carbCalories / food.calories); 
         foodSuggestions += `${food.name}: ${servings} servings of ${food.quantity}\n`;
     });
 
-    // Suggest fat foods
     foodSuggestions += "\nFat Sources:\n";
     foods.fats.forEach(food => {
         let servings = Math.floor(fatCalories / food.calories); 
         foodSuggestions += `${food.name}: ${servings} servings of ${food.quantity}\n`;
     });
 
-    // Display food suggestions
+    // Display suggestions
     document.getElementById("foodSuggestions").innerText = foodSuggestions;
 }
