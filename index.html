@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-adsense-account" content="ca-pub-9731780418658233">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Intake Calculator</title>
+    <title>Calorie Intake and Meal Planner</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Calorie Intake and Diet Planner</h1>
         <form id="calorieForm">
-            <label>Gender</label>
+            <label>Gender:</label>
             <div class="gender-options">
-                <label>
-                    <input type="radio" name="gender" value="male" checked> Male
-                </label>
-                <label>
-                    <input type="radio" name="gender" value="female"> Female
-                </label>
+                <label><input type="radio" name="gender" value="male" checked> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
             </div>
 
             <label for="age">Age (years):</label>
@@ -40,39 +35,38 @@
 
             <label>Goal:</label>
             <div class="goal-options">
-                <label>
-                    <input type="radio" name="goal" value="maintain" checked> Maintain Weight
-                </label>
-                <label>
-                    <input type="radio" name="goal" value="lose"> Lose Weight
-                </label>
-                <label>
-                    <input type="radio" name="goal" value="gain"> Gain Weight
-                </label>
+                <label><input type="radio" name="goal" value="maintain" checked> Maintain Weight</label>
+                <label><input type="radio" name="goal" value="lose"> Lose Weight</label>
+                <label><input type="radio" name="goal" value="gain"> Gain Weight</label>
             </div>
 
             <label>Current Body Type:</label>
             <div class="body-type-options">
-                <label>
-                    <input type="radio" name="bodyType" value="ectomorph" checked> Ectomorph (Lean/Thin)
-                </label>
-                <label>
-                    <input type="radio" name="bodyType" value="mesomorph"> Mesomorph (Muscular/Athletic)
-                </label>
-                <label>
-                    <input type="radio" name="bodyType" value="endomorph"> Endomorph (Round/Soft)
-                </label>
+                <label><input type="radio" name="bodyType" value="ectomorph" checked> Ectomorph</label>
+                <label><input type="radio" name="bodyType" value="mesomorph"> Mesomorph</label>
+                <label><input type="radio" name="bodyType" value="endomorph"> Endomorph</label>
             </div>
 
             <button type="button" id="calculate">Calculate</button>
         </form>
         <div id="result"></div>
-        <div id="foodSuggestions" style="white-space: pre-wrap; margin-top: 20px;"></div> <!-- Food suggestions display -->
+        <div id="foodSuggestions"></div>
     </div>
+
+    <div id="mealPreferences">
+        <h2>Meal Suggestions</h2>
+        <label for="preference">What do you prefer?</label>
+        <select id="preference">
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="non-vegetarian">Non-Vegetarian</option>
+        </select>
+        <button type="button" id="suggestMeals">Get Meal Suggestions</button>
+        <div id="mealSuggestions" style=" margin-top: 20px;"></div>
+    </div>
+
     <div id="healthTips">
-        <h2>
-            Key lifestyle Habits for a Better Life
-        </h2>
+        <h2>Key Lifestyle Habits for a Better Life</h2>
         <div id="maleTips">
             <h3>For Males</h3>
             <ul>
@@ -100,7 +94,6 @@
                 <li>Create a relaxing bedtime routine, such as reading or meditating.</li>
             </ul>
         </div>
-
         <div class="weight-loss-tips">
             <h3>Weight Loss Tips:</h3>
             <ul>
